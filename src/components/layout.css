@@ -222,3 +222,31 @@ pre tt:before,
 pre tt:after {
   content: none;
 }
+
+/* custom styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Source+Sans+Pro:wght@600&display=swap');
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #ffc354;;
+}
+
+#___gatsby {
+  height: 100% !important;
+}
+
+#gatsby-focus-wrapper {
+  height: 100% !important;
+}
+
+.global-wrapper {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
