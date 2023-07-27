@@ -7,6 +7,7 @@ exports.createPages = async ({ graphql, actions }) => {
     allContentfulPizza {
       nodes {
         id
+        name
       }
     }
   }
