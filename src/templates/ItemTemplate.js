@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Seo from "../components/seo"
 import * as styles from "../styles/_styles.module.scss"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 
 const Project = ({data, pageContext, children}) => {
@@ -12,7 +12,7 @@ const Project = ({data, pageContext, children}) => {
   //const images = data.allFile.nodes
   //const imageCover = data.allFile.nodes.filter(node => node.name === `cover`)
   //const imageAll = data.allFile.nodes.filter(node => node.name === `all`)
-  //console.log(data)
+  console.log(data)
   return (
     <>
       <div className={styles.container}> 
@@ -24,7 +24,7 @@ const Project = ({data, pageContext, children}) => {
             alt={`${data.contentfulPizza.name} image`}
           />
         </div>
-        <div className={styles.contentFromMdx} dangerouslySetInnerHTML={{__html: `${data.contentfulPizza.description.raw}`}} />
+        <div className={styles.contentFromMdx} /* dangerouslySetInnerHTML={{__html: `${data.contentfulPizza.description.raw}`}} / */>{data.contentfulPizza.description.raw}</div>
       </div>
     </>
 )}
@@ -50,6 +50,9 @@ query Item($id: String) {
     price
     rating
     weight
+    mainImage {
+      gatsbyImageData
+    }
   }
 }
 `
