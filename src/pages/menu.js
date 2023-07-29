@@ -16,11 +16,11 @@ const Menu = ({ data }) => {
 
   //useLocalStorage("cart", "aa")
   //console.log(useLocalStorage("cart", 111))
-  console.log(localStorage.cart)
+  //console.log(localStorage.cart)
 
   console.log(cart)
   
-  console.log(localStorage.cart)
+  //console.log(localStorage.cart)
   const allCategories = []
   data.allContentfulPizza.nodes.forEach(node => {
     allCategories.push(node.category)
