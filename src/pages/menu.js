@@ -4,22 +4,29 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import useLocalStorage from "../hooks/useLocalStorage"
 import * as styles from "../styles/_styles.module.scss"
 
 import bag from "../images/bag-icon.svg"
 
 
 const Menu = ({ data }) => {
-  console.log(localStorage.cart)
-  const [ cart, setCart ] = useState({})
-  localStorage.cart ? setCart(localStorage.cart) : localStorage.setItem("cart", "Tom")
 
+  const [ cart, setCart ] = useLocalStorage("cart", 111)
+
+  //useLocalStorage("cart", "aa")
+  //console.log(useLocalStorage("cart", 111))
+  console.log(localStorage.cart)
+
+  console.log(cart)
+  
+  console.log(localStorage.cart)
   const allCategories = []
   data.allContentfulPizza.nodes.forEach(node => {
     allCategories.push(node.category)
   })
   const uniqueCategories = [...new Set(allCategories)]
-  //console.log(uniqueCategories)
+
   return (
   <Layout>
     <div className={styles.container}>
@@ -30,7 +37,7 @@ const Menu = ({ data }) => {
             const image = getImage(node.mainImage)
               return (
                 <div key={node.id}>    
-                  <div className={styles.productImage}>           
+                  <div className={styles.productImage}  onClick={() => setCart(node.name)}>           
                     <GatsbyImage
                       image={image}
                       alt={`${node.name} pizza image`}
@@ -48,6 +55,7 @@ const Menu = ({ data }) => {
         </div>
         <div className={styles.info}>
           <h4>cart</h4>
+          <div>{cart}</div>
           <h4>categories</h4>
           <ul>
             {uniqueCategories.map(category => {
