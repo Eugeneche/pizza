@@ -1,8 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Seo from "../components/seo"
-import * as styles from "../styles/_styles.module.scss"
+import * as styles from "../styles/_template.module.scss"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import Layout from "../components/layout"
 
 
 const Project = ({data, pageContext, children}) => {
@@ -12,11 +14,11 @@ const Project = ({data, pageContext, children}) => {
   //const images = data.allFile.nodes
   //const imageCover = data.allFile.nodes.filter(node => node.name === `cover`)
   //const imageAll = data.allFile.nodes.filter(node => node.name === `all`)
-  console.log(data)
+  console.log(data.contentfulPizza.description)
   return (
-    <>
+    <Layout>
       <div className={styles.container}> 
-        <h1  className={styles.projectsHeader}>{data.contentfulPizza.name}</h1>
+        <h1 className={styles.h1}>{data.contentfulPizza.name}</h1>
         <div className={styles.projectsImages}>
           <GatsbyImage 
             image={getImage(data.contentfulPizza.mainImage)}
@@ -24,9 +26,9 @@ const Project = ({data, pageContext, children}) => {
             alt={`${data.contentfulPizza.name} image`}
           />
         </div>
-        <div className={styles.contentFromMdx} /* dangerouslySetInnerHTML={{__html: `${data.contentfulPizza.description.raw}`}} / */>{data.contentfulPizza.description.raw}</div>
+        <div className={styles.contentFromMdx}>{documentToReactComponents(JSON.parse(data.contentfulPizza.description.raw))}</div>
       </div>
-    </>
+    </Layout>
 )}
 
 export default Project
