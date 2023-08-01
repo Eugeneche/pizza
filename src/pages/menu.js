@@ -12,12 +12,12 @@ import bag from "../images/bag-icon.svg"
 
 const Menu = ({ data }) => {
 
-  const [ cart, setCart ] = useLocalStorage("cart", {})
-  const [ cartForDisplay, setCartForDisplay] = useState([])
-  console.log(cart)
-  
   const allCategories = []
-  //const cartForDisplay = []
+  const cartForDisplay = []
+
+  const [ cart, setCart ] = useLocalStorage("cart", {})
+  const [ l, setL] = useState(cartForDisplay.length)
+  console.log(cart)
 
   data.allContentfulPizza.nodes.forEach(node => {
     allCategories.push(node.category)
@@ -25,16 +25,21 @@ const Menu = ({ data }) => {
 
   const uniqueCategories = [...new Set(allCategories)]
 
-  data.allContentfulPizza.nodes.forEach(node => {
-                
-    return Object.keys(cart).forEach(pizzaArticle => {
+  const updateCartForDisplay = () => {
 
-      if (node.article.toString() === pizzaArticle) {
-        node.quantity = cart[pizzaArticle]
-        cartForDisplay.push(node)
-      }
+    data.allContentfulPizza.nodes.forEach(node => {
+                
+      return Object.keys(cart).forEach(pizzaArticle => {
+  
+        if (node.article.toString() === pizzaArticle) {
+          node.quantity = cart[pizzaArticle]
+          cartForDisplay.push(node)
+        }
+      })
     })
-  })
+  }
+
+  updateCartForDisplay()
 
   const addItem = (article) => {
     setCart({...cart, [article]: cart[article] + 1})
@@ -46,10 +51,12 @@ const Menu = ({ data }) => {
   
     if (cart[article] < 2) {
       Reflect.deleteProperty(cart, article.toString())
-      setCart(cart)     
+      setCart(cart)
+      setL(cartForDisplay.length)
     }
+    
   }
-
+  
   console.log(cartForDisplay)
 
   return (
