@@ -8,6 +8,7 @@ import useLocalStorage from "../hooks/useLocalStorage"
 import * as styles from "../styles/_menu.module.scss"
 
 import bag from "../images/bag-icon.svg"
+import bag_filled from "../images/bag-icon_filled.svg"
 
 
 const Menu = ({ data }) => {
@@ -25,21 +26,16 @@ const Menu = ({ data }) => {
 
   const uniqueCategories = [...new Set(allCategories)]
 
-  const updateCartForDisplay = () => {
-
-    data.allContentfulPizza.nodes.forEach(node => {
+  data.allContentfulPizza.nodes.forEach(node => {
                 
-      return Object.keys(cart).forEach(pizzaArticle => {
-  
-        if (node.article.toString() === pizzaArticle) {
-          node.quantity = cart[pizzaArticle]
-          cartForDisplay.push(node)
-        }
-      })
-    })
-  }
+    return Object.keys(cart).forEach(pizzaArticle => {
 
-  updateCartForDisplay()
+      if (node.article.toString() === pizzaArticle) {
+        node.quantity = cart[pizzaArticle]
+        cartForDisplay.push(node)
+      }
+    })
+  })
 
   const addItem = (article) => {
     setCart({...cart, [article]: cart[article] + 1})
@@ -75,9 +71,17 @@ const Menu = ({ data }) => {
                         image={image}
                         alt={`${node.name} pizza image`}
                       />
-                      <div onClick={() => setCart({ ...cart, [currentArticle]: 1})} className={styles.bagBackground}>
-                        <img src={bag} />
-                      </div> 
+                      {!cart[currentArticle] ? 
+
+                        <div onClick={ () => setCart({ ...cart, [currentArticle]: 1}) } className={styles.bagBackground}>
+                          <img src={bag} />
+                        </div> :
+
+                        <div className={styles.bagBackground}>
+                          <img src={bag_filled} />
+                        </div>
+                      }
+
                     </div>
                     <h3 className={styles.productName}>{node.name}</h3>
                     <h4>${node.price}</h4>

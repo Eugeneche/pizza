@@ -1,16 +1,35 @@
 import React, { useState, useEffect } from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { Link/* , graphql, useStaticQuery */ } from "gatsby"
 import * as styles from "./_MainMenu.module.scss"
 import NavLink from "./NavLink"
+//import useLocalStorage from "../../hooks/useLocalStorage"
 //import logo from "../../images/logo_black.svg"
 import logo from "../../images/gatsby-icon.png"
 //import hamburger from "../../images/menu.svg"
 import hamburgerStroke from "../../images/menu_stroke.svg"
 import close from "../../images/close.svg"
+import bag from "../../images/bag-icon.svg"
 
 const MainMenu = () => {
 
+  //const [ cart, setCart ] = useLocalStorage("cart", {})
   const [isShow, setIsShow] = useState(false)
+  const [totalQuantity, setTotalQuantity] = useState(Object.values(JSON.parse(window.localStorage.getItem('cart'))).reduce((acc, cur) => acc + cur, 0))
+  //const [totalQuantity, setTotalQuantity] = useState(0)
+  //setTotalQuantity(Object.values(cart).reduce((acc, cur) => acc + cur, 0))
+  //let totalQuantity = Object.values(cart).reduce((acc, cur) => acc + cur, 0)
+  console.log(totalQuantity)
+
+  useEffect(() => {
+    return () => setTotalQuantity(Object.values(JSON.parse(window.localStorage.getItem('cart'))).reduce((acc, cur) => acc + cur, 0))
+/*     try {
+      const storedCart = window.localStorage.getItem('cart')
+      setTotalQuantity(storedCart ? Object.values(JSON.parse(storedCart)).reduce((acc, cur) => acc + cur, 0) : 0)
+    } catch (error) {
+      console.log(error)
+      return setTotalQuantity(0)
+    } */
+  }, [{}])
 
   const styleBcShow = {
     left: "10%",
@@ -31,7 +50,7 @@ const MainMenu = () => {
     <>
       <nav className={styles.desktopMenu}>
         <div className={styles.desktopMenuContainer}>
-          <ul className={styles.items}>
+          <ul className={styles.pages}>
             <li><NavLink /* className={styles.menuItem} */ to="/">HOME</NavLink></li>
             <li><NavLink /* className={styles.menuItem} */ to="/menu">MENU</NavLink></li>
   {/*           <div className={styles.services}>
@@ -47,6 +66,13 @@ const MainMenu = () => {
             <li><NavLink className={styles.menuItem} to="/contacts">contacts</NavLink></li> */}
           </ul>
           <Link className={styles.logo} to="/"><img src={logo} alt="logo"></img></Link>
+          <ul className={styles.contacts}>
+            <li className={styles.bagItem}>
+              <img className={styles.bagIcon} src={bag} alt="shopping bag icon"></img>
+              <span className={styles.cartQuantity}>{totalQuantity}</span>
+            </li>
+            
+          </ul>
         </div>
       </nav>
 
