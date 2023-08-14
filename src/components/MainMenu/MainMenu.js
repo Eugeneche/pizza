@@ -14,7 +14,7 @@ const MainMenu = () => {
 
   //const [ cart, setCart ] = useLocalStorage("cart", {})
   const [isShow, setIsShow] = useState(false)
-  const [totalQuantity, setTotalQuantity] = useState(Object.values(JSON.parse(window.localStorage.getItem('cart'))).reduce((acc, cur) => acc + cur, 0))
+  const [totalQuantity, setTotalQuantity] = useState(0)
   //const [totalQuantity, setTotalQuantity] = useState(0)
   //setTotalQuantity(Object.values(cart).reduce((acc, cur) => acc + cur, 0))
   //let totalQuantity = Object.values(cart).reduce((acc, cur) => acc + cur, 0)
