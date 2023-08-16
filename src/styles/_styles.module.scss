@@ -8,81 +8,23 @@
     position: relative;
 }
 
+.hot-offer {
+    width: 100%;
+    height: fit-content;
+    background: #ffffff;
 
-/* menu page */
-
-.menuContainer {
-    display: grid;
-    grid-template-columns: 70% 30%;
-}
-
-.products {
-    width: 95%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-
-    h3, h4 {
-        margin: 0;
+    .container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
     }
 }
 
-.product-image {
-    width: 80%;
-    position: relative;
-    cursor: pointer;
-
-    .bag-background {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: white;
-        height: 50px;
-        width: 50px;
-        text-align: center;
-        padding: 5px 0;
-        opacity: 0;
-        transition: all ease 0.5s;
-        cursor: pointer;
-
-        img {
-            height: 40px;
-        }
-    }
-}
-
-.product-image:hover {
-
-    .bag-background {
-        opacity: 1;
-        transition: all ease 0.5s;
-
-
-    }
-}
-
-.info {
-    position: sticky;
-    top: 70px;
-    height: 500px;
-    background: white;
-
-    li {
-        list-style: none;
-    }
-}
-
-.cart-list {
-
-    .add {
-        margin-right: -3px;
-    }
-
-    .extract {
-        margin-left: -3px;
-    }
+.pizza-item {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
 }
 
 
-/* end of menu page */
+

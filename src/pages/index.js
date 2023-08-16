@@ -1,20 +1,45 @@
 import * as React from "react"
-//import { graphql } from "gatsby"
-//import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import * as styles from "../styles/_styles.module.scss"
+import Header from "../components/Header/Header"
 
 
-const IndexPage = () => {
-  //console.log(data)
+const IndexPage = ({data}) => {
+  
+  const hotOffer = data.allContentfulPizza.nodes.splice(-4)
+  console.log(hotOffer)
   return (
   <Layout>
-    <div  className={styles.container}>
-      <h1 className={styles.h1}>Welcome!</h1>
+    <Header />
+    <section>
+      <div  className={styles.container}>
+        <h1 className={styles.h1}>Experience Pizza Passion at Its Finest on Your Plate!</h1>
+      </div>
+    </section>
 
-    </div>
+    <section>
+      <div className={styles.hotOffer}>
+        <div className={styles.container}>
+          {hotOffer.map(pizza => {
+            return (
+              <div className={styles.pizzaItem} key={pizza.id}>
+                <GatsbyImage 
+                  image={getImage(pizza.mainImage)} 
+                  alt={`Image of ${pizza.name}`} 
+                  style={{width: "250px"}}
+                />
+                <h4>{pizza.name}</h4>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+
   </Layout>
 )}
 
@@ -27,8 +52,8 @@ export const Head = () => <Seo title="Home" />
 
 export default IndexPage
 
-/* export const query = graphql`
-  query getAll {
+export const query = graphql`
+  query getAllProducts {
     allContentfulPizza {
       nodes {
         id
@@ -46,4 +71,4 @@ export default IndexPage
       }
     }
   }
-` */
+`

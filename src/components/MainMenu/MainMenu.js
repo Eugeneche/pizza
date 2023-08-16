@@ -12,23 +12,12 @@ import bag from "../../images/bag-icon.svg"
 
 const MainMenu = () => {
 
-  //const [ cart, setCart ] = useLocalStorage("cart", {})
   const [isShow, setIsShow] = useState(false)
   const [totalQuantity, setTotalQuantity] = useState(0)
-  //const [totalQuantity, setTotalQuantity] = useState(0)
-  //setTotalQuantity(Object.values(cart).reduce((acc, cur) => acc + cur, 0))
-  //let totalQuantity = Object.values(cart).reduce((acc, cur) => acc + cur, 0)
-  console.log(totalQuantity)
+
 
   useEffect(() => {
-    return () => setTotalQuantity(Object.values(JSON.parse(window.localStorage.getItem('cart'))).reduce((acc, cur) => acc + cur, 0))
-/*     try {
-      const storedCart = window.localStorage.getItem('cart')
-      setTotalQuantity(storedCart ? Object.values(JSON.parse(storedCart)).reduce((acc, cur) => acc + cur, 0) : 0)
-    } catch (error) {
-      console.log(error)
-      return setTotalQuantity(0)
-    } */
+    setTotalQuantity(Object.values(JSON.parse(window.localStorage.getItem('cart'))).reduce((acc, cur) => acc + cur, 0))
   }, [{}])
 
   const styleBcShow = {
@@ -67,9 +56,16 @@ const MainMenu = () => {
           </ul>
           <Link className={styles.logo} to="/"><img src={logo} alt="logo"></img></Link>
           <ul className={styles.contacts}>
-            <li className={styles.bagItem}>
-              <img className={styles.bagIcon} src={bag} alt="shopping bag icon"></img>
-              <span className={styles.cartQuantity}>{totalQuantity}</span>
+            <li className={styles.cart}>
+              <img src={bag} alt="shopping bag icon"></img>
+              {totalQuantity ? 
+              <div>
+                <span className={styles.cartQuantityBackgroung}></span>
+                <span className={styles.cartQuantity}>{totalQuantity}</span> 
+                </div> :
+                <div></div>
+                }
+              
             </li>
             
           </ul>

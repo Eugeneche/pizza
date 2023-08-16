@@ -61,10 +61,38 @@
     position: sticky;
     top: 70px;
     height: 500px;
+    padding: 0 20px;
     background: white;
+
+    ul {
+        margin: 0 0 10px 10px;
+    }
 
     li {
         list-style: none;
+    }
+
+    .quantity-control {
+        margin-left: 10px;
+    }
+
+    .add, .extract {
+        height: 15px;
+        width: 15px;
+        line-height: 14px;
+        border-radius: 5px;
+    }
+
+    .add {
+        color: #008000;
+        border: 1px solid #008000;
+        background: #c9ffc9;     
+    }
+
+    .extract {
+        color: #ff0000;
+        border: 1px solid #ff0000;
+        background: #ffe0e0;     
     }
 }
 

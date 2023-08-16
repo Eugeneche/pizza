@@ -5,6 +5,7 @@ button {
 }
 
 .desktop-menu {
+    position: absolute;
     width: 100%;
     height: 80px;
     z-index: 10;
@@ -66,39 +67,47 @@ button {
 
     .contacts {
         
-        .bag-item {
+        .cart {
+            display: flex;
+            position: relative;
+            margin: 0;
 
-            li {
+            img {
                 margin: 0;
+                width: 30px;
             }
         }
 
-        &::before {
-            position: relative;
-            content: "";
-            display: block;
-            top: 10px;
+        .cart-quantity-backgroung {
+            position: absolute;
+            top: -16px;
             left: 10px;
-            height: 25px;
-            width: 25px;
+            height: 27px;
+            width: 27px;
             background: white;
             border-radius: 50%;
+            z-index: 1;
+        }
+
+        .cart-quantity {
+            position: absolute;
+            width: 27px;
+            top: -15px;
+            right: -7px;
+            text-align: center;
+            color: orange;
+            font-weight: 400;
+            z-index: 2;
         }
     }
 
-    .bag-item {
+/*     .bag-item {
         height: 25px;
         margin: 0;
         position: relative;
-    }
+    } */
 
-    .cart-quantity {
-        color: orange;
-        font-weight: 400;
-        position: absolute;
-        top: -14px;
-        right: -5px;
-    }
+
 }
 
 /* MOBILE */
