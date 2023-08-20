@@ -1,0 +1,16 @@
+.review-slider {
+    position: relative;
+    width: 100%;
+    display: flex;
+    gap: 30%;
+    transition: all ease 1s;
+}
+
+.review-item {  
+    min-width: 100%;
+
+    .review-name {
+        color: orange;
+        padding: 0 5vw;
+    }
+}

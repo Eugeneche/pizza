@@ -1,9 +1,18 @@
+.main-page-wrapper {
+    background-color: white;
+}
+
 .h1 {
     margin-top: 80px;
 }
 
+h2 {
+    width: fit-content;
+    margin: auto;
+}
+
 .container {
-    width: 1200px;
+    max-width: 1200px;
     margin: auto;
     position: relative;
 }
@@ -11,19 +20,103 @@
 .hot-offer {
     width: 100%;
     height: fit-content;
-    background: #ffffff;
-
-    .container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-    }
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
 .pizza-item {
     display: flex;
     flex-direction: column;
     justify-items: center;
+}
+
+.all-products {
+    display: block;
+    margin: auto;
+    width: fit-content;
+    height: 30px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    background: #fd9f3e;
+    border: 1px solid #df3b00;
+    transition: all ease 0.5s;
+
+    &:hover {
+        background: #ffc48a;
+        border: 1px solid #ff4e0e;
+
+    }
+}
+
+.about {
+    display: grid;
+    grid-template-columns: 50% 10% 2% 38%;
+    grid-template-rows: 58% 28% 14%;
+    width: 90%;
+    margin: auto;
+
+    .about-image {
+        display: flex;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+
+    .text {
+        display: flex;
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    .extra-info {
+        display: flex;
+        justify-content: space-evenly;
+        grid-column-start: 2;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 4;
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+        background: #db8400;
+        color: #ffc48a;
+        z-index: 1;
+
+        .left, .right {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            width: 40%;
+            justify-content: center;
+            align-items: center;
+
+            span:nth-child(1) {
+                font-size: 16px;
+                color: black;
+            }
+
+            span:nth-child(2) {
+                font-size: 70px;
+            }
+        }
+    }
+}
+
+.testimonials {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    max-height: 700px;
+    background-color: #ffc354;
+
+    .testimonials-container {
+        width: 70%;
+        margin: auto;
+        overflow: hidden;
+    }
 }
 
 

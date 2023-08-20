@@ -176,9 +176,6 @@ p *:last-child {
 li > p {
   margin-bottom: calc(var(--space-4) / 2);
 }
-p {
-  max-width: 680px;
-}
 code {
   font-size: 0.875rem;
 }
@@ -252,14 +249,13 @@ main {
   flex-grow: 1;
 }
 
-h1 {
+h1, h2, h3, h4, h5  {
   font-family: 'Oswald', sans-serif;
-  font-size: 42px;
   text-transform: uppercase;
-  text-align: center;
+
 }
 
-h2, h3, h4, h5 {
-  font-family: 'Jost', sans-serif;
-  text-transform: uppercase;
+h1 {
+  font-size: 42px;
+  text-align: center;
 }
