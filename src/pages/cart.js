@@ -1,34 +1,30 @@
-import React, { useEffect, useState } from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import useLocalStorage from "../hooks/useLocalStorage"
-import * as styles from "../styles/_menu.module.scss"
+import * as styles from "../styles/_cart.module.scss"
 
-import bag from "../images/bag-icon.svg"
-import bag_filled from "../images/bag-icon_filled.svg"
+//import bag from "../images/bag-icon.svg"
+//import bag_filled from "../images/bag-icon_filled.svg"
+import Form from "../components/Form/Form"
 
 
 const Cart = ({ data }) => {
 
-  const allCategories = []
+  //const allCategories = []
+  let htmlOrder = ''
+  let totalCost = 0
   const cartForDisplay = []
 
   const [ cart, setCart ] = useLocalStorage("cart", {})
   const [ l, setL] = useState(cartForDisplay.length)
-  console.log(cart)
-
-  data.allContentfulPizza.nodes.forEach(node => {
-    allCategories.push(node.category)
-  })
-
-  const uniqueCategories = [...new Set(allCategories)]
 
   data.allContentfulPizza.nodes.forEach(node => {
                 
-    return Object.keys(cart).forEach(pizzaArticle => {
+    Object.keys(cart).forEach(pizzaArticle => {
 
       if (node.article.toString() === pizzaArticle) {
         node.quantity = cart[pizzaArticle]
@@ -36,6 +32,21 @@ const Cart = ({ data }) => {
       }
     })
   })
+
+  const setOrder = () => {
+
+    let totalCostUnrounded = 0
+
+    cartForDisplay.map(pizzaObj => {
+
+      htmlOrder += `${pizzaObj.article} - ${pizzaObj.name}, ${pizzaObj.weight}g - ${pizzaObj.price} X ${pizzaObj.quantity} = $${(pizzaObj.price * pizzaObj.quantity).toFixed(2)}\n`
+      totalCostUnrounded += pizzaObj.price * pizzaObj.quantity     
+    })
+    totalCost = totalCostUnrounded.toFixed(2)
+    htmlOrder += `Total cost: $${totalCost}\n`
+  }
+
+  setOrder()
 
   const addItem = (article) => {
     setCart({...cart, [article]: cart[article] + 1})
@@ -50,73 +61,46 @@ const Cart = ({ data }) => {
       setCart(cart)
       setL(cartForDisplay.length)
     }
-    
   }
-  
-  console.log(cartForDisplay)
 
   return (
     <Layout>
       <div className={styles.container}>
-        <h1 className={styles.h1}>Cart</h1>
-        <div className={styles.menuContainer}>
-          <div className={styles.products}>
-            {data.allContentfulPizza.nodes.map(node => {
-              const image = getImage(node.mainImage)
-                const currentArticle = node.article
-                return (
-                  <div key={node.id}>    
-                    <div className={styles.productImage}>           
-                      <GatsbyImage
-                        image={image}
-                        alt={`${node.name} pizza image`}
-                      />
-                      {!cart[currentArticle] ? 
+        <h1 className={styles.h1}>Your cart</h1>
+        {cartForDisplay.length > 0 ? 
 
-                        <div onClick={ () => setCart({ ...cart, [currentArticle]: 1}) } className={styles.bagBackground}>
-                          <img src={bag} />
-                        </div> :
+          <div>
+            <div className={styles.cartContents}>
+              <ul className={styles.cartList}>
+                {cartForDisplay.map(pizzaObj => {
+                  return (
+                    <li key={pizzaObj.id} className={styles.productInfo}>
+                      <span className={styles.productName}>{pizzaObj.name}</span>
+                      <span>{`${pizzaObj.weight} g`}</span>
+                      <span>{pizzaObj.quantity}</span> 
+                      <span>x</span>
+                      <span>{`$${pizzaObj.price}`}</span> 
+                      <span>=</span>
+                      <span>{`$${(pizzaObj.price * pizzaObj.quantity).toFixed(2)}`}</span>
+                      <span className={styles.quantityControl}>
+                        <button onClick={() => addItem(pizzaObj.article)} className={styles.add}>&#43;</button>
+                        <button onClick={() => extractItem(pizzaObj.article)} className={styles.extract}>&#8722;</button>
+                      </span>
+                    </li>
+                  )})
+                }
+                <li className={styles.productCost}>
+                  <span className={styles.totalCostTitle}>Total cost:</span>
+                  <span className={styles.totalCostSum}>{`$${totalCost}`}</span>
+                </li>
+              </ul>
+            </div>
 
-                        <div className={styles.bagBackground}>
-                          <img src={bag_filled} />
-                        </div>
-                      }
-
-                    </div>
-                    <h3 className={styles.productName}>{node.name}</h3>
-                    <h4>${node.price}</h4>
-                  </div>
-                )           
-              }
-            )}
-          </div>
-          <div className={styles.info}>
-            <h4>cart</h4>
-            <ul className={styles.cartList}>
-              {cartForDisplay.map(pizzaObj => {
-                return (
-                  <li key={pizzaObj.id}>
-                    {pizzaObj.name}, {`${pizzaObj.weight} g`} - {pizzaObj.quantity} 
-                    <span className={styles.quantityControl}>
-                      <button onClick={() => addItem(pizzaObj.article)} className={styles.add}>&#43;</button>
-                      <button onClick={() => extractItem(pizzaObj.article)} className={styles.extract}>&#8722;</button>
-                    </span>
-                  </li>
-                )
-              })}
-            </ul>
-            <h4>categories</h4>
-            <ul>
-              {uniqueCategories.map(category => {
-                return (
-                  <li key={category}>
-                    {category}
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        </div>
+            <Form order={htmlOrder}/>
+          </div> : 
+    
+          <p>Your cart is empty</p>
+        }
 
       </div>  
     </Layout>

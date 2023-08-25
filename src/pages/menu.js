@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
@@ -18,7 +18,6 @@ const Menu = ({ data }) => {
 
   const [ cart, setCart ] = useLocalStorage("cart", {})
   const [ l, setL] = useState(cartForDisplay.length)
-  console.log(cart)
 
   data.allContentfulPizza.nodes.forEach(node => {
     allCategories.push(node.category)
@@ -52,8 +51,6 @@ const Menu = ({ data }) => {
     }
     
   }
-  
-  console.log(cartForDisplay)
 
   return (
     <Layout>
@@ -74,11 +71,11 @@ const Menu = ({ data }) => {
                       {!cart[currentArticle] ? 
 
                         <div onClick={ () => setCart({ ...cart, [currentArticle]: 1}) } className={styles.bagBackground}>
-                          <img src={bag} />
+                          <img src={bag} alt="bag icon" />
                         </div> :
 
                         <div className={styles.bagBackground}>
-                          <img src={bag_filled} />
+                          <img src={bag_filled} alt="bag with some ordered goods icon" />
                         </div>
                       }
 
@@ -95,8 +92,11 @@ const Menu = ({ data }) => {
             <ul className={styles.cartList}>
               {cartForDisplay.map(pizzaObj => {
                 return (
-                  <li key={pizzaObj.id}>
-                    {pizzaObj.name}, {`${pizzaObj.weight} g`} - {pizzaObj.quantity} 
+                  <li key={pizzaObj.id} className={styles.productItem}>
+                    <span>{pizzaObj.name}</span>
+                    <span>{pizzaObj.quantity}</span>
+                    <span>x</span>
+                    <span>{`$${pizzaObj.price}`}</span>
                     <span className={styles.quantityControl}>
                       <button onClick={() => addItem(pizzaObj.article)} className={styles.add}>&#43;</button>
                       <button onClick={() => extractItem(pizzaObj.article)} className={styles.extract}>&#8722;</button>

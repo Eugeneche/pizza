@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link } from "gatsby"
+//import { Link } from "gatsby"
 import * as styles from "./_Footer.module.scss"
 
 const Footer = () => {

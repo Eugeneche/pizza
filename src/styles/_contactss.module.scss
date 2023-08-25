@@ -1,0 +1,37 @@
+.main-page-wrapper {
+    background-color: white;
+}
+
+.h1 {
+    margin-top: 80px;
+}
+
+h2 {
+    width: fit-content;
+    margin: auto;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+}
+
+.address-block {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-auto-rows: 300px;
+    margin-bottom: 20px;
+}
+
+.address {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background: #ffffff;
+    font-style: normal;
+}
+
+iframe {
+    height: 300px;
+}

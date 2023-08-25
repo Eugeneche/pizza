@@ -17,7 +17,7 @@ const MainMenu = () => {
 
 
   useEffect(() => {
-    setTotalQuantity(Object.values(JSON.parse(window.localStorage.getItem('cart'))).reduce((acc, cur) => acc + cur, 0))
+    window.localStorage.getItem('cart') && setTotalQuantity(Object.values(JSON.parse(window.localStorage.getItem('cart'))).reduce((acc, cur) => acc + cur, 0))
   }, [{}])
 
   const styleBcShow = {
@@ -42,6 +42,7 @@ const MainMenu = () => {
           <ul className={styles.pages}>
             <li><NavLink /* className={styles.menuItem} */ to="/">HOME</NavLink></li>
             <li><NavLink /* className={styles.menuItem} */ to="/menu">MENU</NavLink></li>
+            <li><NavLink /* className={styles.menuItem} */ to="/contacts">CONTACTS</NavLink></li>
   {/*           <div className={styles.services}>
               services
               <ul className={[styles.servicesCategories, styles.menuItem].join(' ')}>
@@ -57,14 +58,15 @@ const MainMenu = () => {
           <Link className={styles.logo} to="/"><img src={logo} alt="logo"></img></Link>
           <ul className={styles.contacts}>
             <li className={styles.cart}>
-              <img src={bag} alt="shopping bag icon"></img>
+              <Link to="/cart"><img src={bag} alt="shopping bag icon"></img></Link>
               {totalQuantity ? 
-              <div>
-                <span className={styles.cartQuantityBackgroung}></span>
-                <span className={styles.cartQuantity}>{totalQuantity}</span> 
+                <div>
+                  <span className={styles.cartQuantityBackgroung}></span>
+                  <span className={styles.cartQuantity}>{totalQuantity}</span> 
                 </div> :
+
                 <div></div>
-                }
+              }
               
             </li>
             
@@ -88,6 +90,7 @@ const MainMenu = () => {
         <div className={styles.items}>
           <Link onClick={() => setIsShow(false)} className={styles.item} to="/">HOME</Link>
           <Link onClick={() => setIsShow(false)} className={styles.item} to="/menu">MENU</Link>
+          <Link onClick={() => setIsShow(false)} className={styles.item} to="/contacts">CONTACTS</Link>
 {/*           <div className={styles.services}>
             
             {servicesCategories.map(cat => {

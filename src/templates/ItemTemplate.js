@@ -26,7 +26,7 @@ const Project = ({data, pageContext, children}) => {
             alt={`${data.contentfulPizza.name} image`}
           />
         </div>
-        <div className={styles.contentFromMdx}>{documentToReactComponents(JSON.parse(data.contentfulPizza.description.raw))}</div>
+        <div>{documentToReactComponents(JSON.parse(data.contentfulPizza.description.raw))}</div>
       </div>
     </Layout>
 )}
