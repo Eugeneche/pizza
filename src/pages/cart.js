@@ -37,7 +37,7 @@ const Cart = ({ data }) => {
 
     let totalCostUnrounded = 0
 
-    cartForDisplay.map(pizzaObj => {
+    cartForDisplay.forEach(pizzaObj => {
 
       htmlOrder += `${pizzaObj.article} - ${pizzaObj.name}, ${pizzaObj.weight}g - ${pizzaObj.price} X ${pizzaObj.quantity} = $${(pizzaObj.price * pizzaObj.quantity).toFixed(2)}\n`
       totalCostUnrounded += pizzaObj.price * pizzaObj.quantity     

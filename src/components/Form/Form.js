@@ -4,7 +4,6 @@ import * as styles from "./_Form.module.scss"
 
 const Form = (props) => {
 
-    console.log(props.order)
     const [order, setOrder] = useState('')
 
     useEffect(() => {       

@@ -14,8 +14,35 @@ const MainMenu = () => {
 
   const [isShow, setIsShow] = useState(false)
   const [totalQuantity, setTotalQuantity] = useState(0)
+  const [isFixed, setIsFixed] = useState(false)
 
+  useEffect(() => {
+    
+    const fixMenu = () => {
+      window.scrollY > 200 && setIsFixed(true)
+      window.scrollY <= 200 && setIsFixed(false)
+      console.log(window.scrollY)
+    };
+    
+    window.addEventListener('scroll', fixMenu);
 
+    return () => {
+      window.removeEventListener('scroll', fixMenu);
+    };
+  }, []);
+
+  const styleNormal = {
+    position: "absolute",
+    transition: "all ease 0.5s",
+  }
+  
+  const styleFixed = {
+    position: "fixed",
+    background: "#ffc354",
+    transition: "all ease 0.5s"
+  }
+
+  //console.log(window)
   useEffect(() => {
     window.localStorage.getItem('cart') && setTotalQuantity(Object.values(JSON.parse(window.localStorage.getItem('cart'))).reduce((acc, cur) => acc + cur, 0))
   }, [{}])
@@ -37,7 +64,7 @@ const MainMenu = () => {
 
   return (
     <>
-      <nav className={styles.desktopMenu}>
+      <nav className={styles.desktopMenu} style={isFixed ? styleFixed : styleNormal}>
         <div className={styles.desktopMenuContainer}>
           <ul className={styles.pages}>
             <li><NavLink /* className={styles.menuItem} */ to="/">HOME</NavLink></li>

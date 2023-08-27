@@ -60,9 +60,10 @@
 .info {
     position: sticky;
     top: 70px;
-    height: 500px;
-    padding: 0 20px;
+    height: max-content;
+    padding: 0 20px 15px;
     background: white;
+    font-family: 'Oswald', sans-serif;
 
     ul {
         margin: 0 0 10px 10px;
@@ -107,4 +108,31 @@
     display: grid;
     grid-template-columns: 53% 7% 5% 23% 12%;
     font-family: 'Oswald', sans-serif;
+}
+
+.total-sum {
+    display: grid;
+    grid-template-columns: 65% 22% 13%;
+    font-weight: 600;
+}
+
+.to-cart-btn {
+    display: flex;
+    justify-content: end;
+    text-decoration: none;
+
+    button {
+        font-family: 'Oswald', sans-serif;
+        color: #ff5200;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+}
+
+.selectedCategory {
+    cursor: default;
+}
+
+.category-item {
+    cursor: pointer;
 }
