@@ -14,7 +14,6 @@ import Form from "../components/Form/Form"
 
 const Cart = ({ data }) => {
 
-  //const allCategories = []
   let htmlOrder = ''
   let totalCost = 0
   const cartForDisplay = []

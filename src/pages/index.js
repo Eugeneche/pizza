@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { GatsbyImage, StaticImage, getImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
@@ -36,7 +36,7 @@ const IndexPage = ({data}) => {
               )
             })}
           </div>
-          <button className={styles.allProducts}>all products</button>
+          <Link to="/menu"><button className={styles.allProducts}>all products</button></Link>
         </div>
       </section>
 
@@ -61,7 +61,7 @@ const IndexPage = ({data}) => {
       </section>
 
       <section>
-        <StaticImage src="../images/pizza_main_page.jpg" alt="pizza image" style={{maxHeight: "700px"}}/* height={600} layout="fullWidth" *//>
+        <StaticImage src="../images/pizza_main_page.jpg" alt="pizza image" style={{maxHeight: "700px", margin: "50px 0 0"}} />
       </section>
 
       <section>

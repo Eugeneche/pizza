@@ -8,7 +8,7 @@ import logo from "../../images/gatsby-icon.png"
 //import hamburger from "../../images/menu.svg"
 import hamburgerStroke from "../../images/menu_stroke.svg"
 import close from "../../images/close.svg"
-import bag from "../../images/bag-icon.svg"
+import bag from "../../images/bag-icon_menu.svg"
 
 const MainMenu = () => {
 
@@ -21,7 +21,6 @@ const MainMenu = () => {
     const fixMenu = () => {
       window.scrollY > 200 && setIsFixed(true)
       window.scrollY <= 200 && setIsFixed(false)
-      console.log(window.scrollY)
     };
     
     window.addEventListener('scroll', fixMenu);
@@ -38,11 +37,10 @@ const MainMenu = () => {
   
   const styleFixed = {
     position: "fixed",
-    background: "#ffc354",
+    background: "#ffa808",
     transition: "all ease 0.5s"
   }
 
-  //console.log(window)
   useEffect(() => {
     window.localStorage.getItem('cart') && setTotalQuantity(Object.values(JSON.parse(window.localStorage.getItem('cart'))).reduce((acc, cur) => acc + cur, 0))
   }, [{}])

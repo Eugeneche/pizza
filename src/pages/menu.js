@@ -9,6 +9,7 @@ import * as styles from "../styles/_menu.module.scss"
 
 import bag from "../images/bag-icon.svg"
 import bag_filled from "../images/bag-icon_filled.svg"
+import arrow from "../images/arrow_right.svg"
 
 
 const Menu = ({ data }) => {
@@ -31,7 +32,7 @@ const Menu = ({ data }) => {
       productsForDisplay.push(node)
     }
   })
-console.log(productsForDisplay)
+
   data.allContentfulPizza.nodes.forEach(node => {
     allCategories.push(node.category)
   })
@@ -74,25 +75,35 @@ console.log(productsForDisplay)
               const image = getImage(node.mainImage)
                 const currentArticle = node.article
                 return (
+                  
                   <div key={node.id}>    
-                    <div className={styles.productImage}>           
+                    <div className={styles.productImage}>    
+                          
                       <GatsbyImage
                         image={image}
                         alt={`${node.name} pizza image`}
                       />
                       {!cart[currentArticle] ? 
 
-                        <div onClick={ () => setCart({ ...cart, [currentArticle]: 1}) } className={styles.bagBackground}>
-                          <img src={bag} alt="bag icon" />
+                        <div className={styles.icons}>
+                          <img onClick={ () => setCart({ ...cart, [currentArticle]: 1}) } src={bag} alt="bag icon" />
+                          <Link to={`../${node.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[" "]/g, "-").toLowerCase()}`}>
+                            <img src={arrow} alt="arrow icon" />
+                          </Link>
                         </div> :
 
-                        <div className={styles.bagBackground}>
+                        <div className={styles.icons}>
                           <img src={bag_filled} alt="bag with some ordered goods icon" />
+                          <Link to={`../${node.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[" "]/g, "-").toLowerCase()}`}>
+                            <img src={arrow} alt="arrow icon" />
+                          </Link>
                         </div>
                       }
 
                     </div>
+                    <Link to={`../${node.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[" "]/g, "-").toLowerCase()}`}>
                     <h3 className={styles.productName}>{node.name}</h3>
+                    </Link>
                     <h4>${node.price}</h4>
                   </div>
                 )           
