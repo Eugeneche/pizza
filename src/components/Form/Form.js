@@ -28,13 +28,13 @@ const Form = (props) => {
     <form className={styles.form} ref={form} onSubmit={sendEmail}>
         <div className={styles.fields}>
             <label htmlFor="user_name">Name</label>
-            <input type="text" name="user_name" placeholder="your name" required />
+            <input type="text" name="user_name" id="user_name" placeholder="your name" required />
 
             <label htmlFor="user_phone">Phone</label>
             <input type="tel" id="user_phone" name="user_phone" placeholder='your phone' required ></input>
 
             <label htmlFor="user_email">email</label>
-            <input type="email" name="user_email" placeholder="your email" required />
+            <input type="email" name="user_email" id="user_email" placeholder="your email" required />
 
             {/* <label htmlFor="order">Your order</label> */}
             <textarea className={styles.order} name="order" defaultValue={order}></textarea>

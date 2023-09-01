@@ -8,11 +8,10 @@ import useLocalStorage from "../hooks/useLocalStorage"
 import Layout from "../components/layout"
 
 
-const Product = ({data, pageContext, children}) => {
+const Product = ({data/* , pageContext, children */}) => {
   
   const [ cart, setCart ] = useLocalStorage("cart", {})
   const [ quantity, setQuantity ] = useState(1)
-  console.log(cart)
 
   const addToCart = () => {
     if (cart) {
@@ -21,12 +20,8 @@ const Product = ({data, pageContext, children}) => {
         cart[data.contentfulPizza.article] ? 
         setCart({...cart, [data.contentfulPizza.article]: cart[data.contentfulPizza.article] + quantity}) :
         setCart({...cart, [data.contentfulPizza.article]: quantity})
-        console.log(data.contentfulPizza.article)
-        console.log(cart)
       })
-    } /* else {
-      setCart(cart.productObject = quantity)
-    } */
+    } 
   }
 
   return (
@@ -41,6 +36,7 @@ const Product = ({data, pageContext, children}) => {
           />
           <div className={styles.productControl}>
             <h3>{`$${data.contentfulPizza.price}`}</h3>
+            <p>{`${data.contentfulPizza.weight}g`}</p>
             <div className={styles.productOrdering}>
               <input type="number" defaultValue={quantity} onChange={(e) => setQuantity(Number(e.target.value))}></input>
               <button onClick={() => addToCart()}>add to cart</button>

@@ -11,9 +11,8 @@ import ReviewSlider from "../components/Reviews/ReviewSlider"
 
 const IndexPage = ({data}) => {
   
-  const hotOffer = data.allContentfulPizza.nodes.splice(-4)
-  //const testimonials = data.allContentfulTestimonial.nodes
-  //console.log(testimonials)
+  const hotOffer = data.allContentfulPizza.nodes.slice(0, 4)
+
   return (
   <Layout>
     <div  className={styles.mainPageWrapper}>
