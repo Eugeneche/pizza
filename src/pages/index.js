@@ -7,6 +7,7 @@ import Seo from "../components/seo"
 import * as styles from "../styles/_styles.module.scss"
 import Header from "../components/Header/Header"
 import ReviewSlider from "../components/Reviews/ReviewSlider"
+//import HeaderSwiper from "../components/HeaderSwiper/HeaderSwiper"
 
 
 const IndexPage = ({data}) => {

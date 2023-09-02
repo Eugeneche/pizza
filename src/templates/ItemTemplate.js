@@ -14,14 +14,15 @@ const Product = ({data/* , pageContext, children */}) => {
   const [ quantity, setQuantity ] = useState(1)
 
   const addToCart = () => {
-    if (cart) {
-      Object.keys(cart).forEach(article => {
 
-        cart[data.contentfulPizza.article] ? 
-        setCart({...cart, [data.contentfulPizza.article]: cart[data.contentfulPizza.article] + quantity}) :
-        setCart({...cart, [data.contentfulPizza.article]: quantity})
-      })
-    } 
+  !cart[data.contentfulPizza.article] ?
+
+    setCart({ ...cart, [data.contentfulPizza.article]: quantity}) :
+
+    Object.keys(cart).forEach(currentArticle => {
+
+      setCart({...cart, [data.contentfulPizza.article]: cart[data.contentfulPizza.article] + quantity})
+    })
   }
 
   return (
@@ -38,7 +39,7 @@ const Product = ({data/* , pageContext, children */}) => {
             <h3>{`$${data.contentfulPizza.price}`}</h3>
             <p>{`${data.contentfulPizza.weight}g`}</p>
             <div className={styles.productOrdering}>
-              <input type="number" defaultValue={quantity} onChange={(e) => setQuantity(Number(e.target.value))}></input>
+              <input type="number" min="1" defaultValue={quantity} onChange={(e) => setQuantity(Number(e.target.value))}></input>
               <button onClick={() => addToCart()}>add to cart</button>
             </div>
             <div className={styles.productCategory}>

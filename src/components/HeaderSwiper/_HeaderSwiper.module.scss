@@ -1,0 +1,17 @@
+
+  
+.slide {
+    position: relative;
+    width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 25% 46% 25%;
+    gap: 2%;
+    z-index: 1;
+}
+
+.header-motto, .header-pizza-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    align-self: center;
+}
