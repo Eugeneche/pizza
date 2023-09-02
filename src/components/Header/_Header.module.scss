@@ -9,8 +9,9 @@
 
 .header-background {
     position: absolute;
+    width: 100%;
     margin: 0;
-    top: -25%;
+    top: -50%;
     left: 0;
     transform: translate(-50%, -50%);
     animation: rotation 120s infinite linear;
@@ -25,7 +26,7 @@
     }
   }
 
-.header-container {
+/* .header-container {
     position: relative;
     width: 1200px;
     margin: auto;
@@ -39,4 +40,4 @@
     font-family: 'Oswald', sans-serif;
     font-size: 40px;
     align-self: center;
-}
+} */

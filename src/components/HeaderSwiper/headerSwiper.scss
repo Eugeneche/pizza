@@ -1,0 +1,14 @@
+.dots {
+    top: 50px !important;
+}
+
+.dot {
+    fill: #e35400 !important;
+    height: 18px;
+    padding-bottom: 18px;
+}
+
+.dot[aria-selected="true"] {
+    border: 1px solid #e35400 !important;
+    border-radius: 50%;
+}

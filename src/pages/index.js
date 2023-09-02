@@ -7,7 +7,6 @@ import Seo from "../components/seo"
 import * as styles from "../styles/_styles.module.scss"
 import Header from "../components/Header/Header"
 import ReviewSlider from "../components/Reviews/ReviewSlider"
-//import HeaderSwiper from "../components/HeaderSwiper/HeaderSwiper"
 
 
 const IndexPage = ({data}) => {
@@ -29,9 +28,11 @@ const IndexPage = ({data}) => {
                   <GatsbyImage 
                     image={getImage(pizza.mainImage)} 
                     alt={`Image of ${pizza.name}`} 
-                    style={{width: "250px"}}
+                    style={{width: "250px", margin: "auto"}}
                   />
-                  <h4>{pizza.name}</h4>
+                  <Link to={`../${pizza.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[" "]/g, "-").toLowerCase()}`}>
+                    <h4>{pizza.name}</h4>
+                  </Link>
                 </div>
               )
             })}

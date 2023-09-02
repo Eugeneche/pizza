@@ -28,6 +28,11 @@ a {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+
+    a {
+        color: #1d1d1d;
+        margin: auto;
+    }
 }
 
 .pizza-item {
