@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react"
-import { graphql } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import React, { useState } from "react"
+import { Link, graphql } from "gatsby"
+//import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -98,7 +98,8 @@ const Cart = ({ data }) => {
             <Form order={htmlOrder}/>
           </div> : 
     
-          <p>Your cart is empty</p>
+          <p className={styles.emptyCart}>Your cart is empty <Link to="/menu">Would you like to place an order?</Link></p>
+          
         }
 
       </div>  

@@ -2,13 +2,14 @@
     background-color: white;
 }
 
-.h1 {
+h1 {
     margin-top: 80px;
 }
 
 h2 {
     width: fit-content;
     margin: 10px auto 40px;
+    text-align: center;
 }
 
 a {
@@ -19,6 +20,7 @@ a {
 .container {
     max-width: 1200px;
     margin: auto;
+    padding: 0 20px;
     position: relative;
 }
 
@@ -64,8 +66,8 @@ a {
 .about {
     display: grid;
     grid-template-columns: 50% 10% 2% 38%;
-    grid-template-rows: 58% 28% 14%;
-    width: 90%;
+    grid-template-rows: 66% 23% 10%;
+    width: 96%;
     margin: auto;
 
     .about-image {
@@ -127,6 +129,97 @@ a {
         width: 70%;
         margin: auto;
         overflow: hidden;
+    }
+}
+
+/* mobile */
+
+@media screen and (max-width: 980px) {
+    
+    h1 {
+        font-size: 36px;
+        padding: 0 5vw;
+        line-height: normal;
+        margin-top: 10vw;
+    }
+
+    h2 {
+        padding: 0 5vw;
+    }
+
+    .hot-offer {
+        grid-template-columns: repeat(2, 1fr);      
+    }
+}
+
+@media screen and (max-width: 834px) {
+    
+    .testimonials {
+        grid-template-columns: 100%;
+        grid-template-rows: max-content 60vw;
+    
+        .testimonials-container {
+            width: 70%;
+            margin: auto;
+            overflow: hidden;
+        }
+    }
+}
+
+@media screen and (max-width: 780px) {
+    
+    .about {
+        grid-template-columns: 100%;
+        grid-template-rows: 60vw auto auto;
+    
+        .about-image {
+            display: flex;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+    
+        .text {
+            display: flex;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            width: 80%;
+            margin: 30px auto;
+        }
+    
+        .extra-info {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 3;
+            grid-row-end: 4;
+            padding: 20px 0;
+        }
+    }
+}
+
+@media screen and (max-width: 570px) {
+
+    .hot-offer {
+        grid-template-columns: repeat(1, 1fr);      
+    }
+
+    .about {
+
+        .extra-info {
+
+            .left, .right {
+                width: 45%;
+                
+                span:nth-child(2) {
+                    font-size: 50px;
+                }
+            }
+
+        }
+
     }
 }
 

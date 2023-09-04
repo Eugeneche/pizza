@@ -20,10 +20,11 @@ button {
     .desktop-menu-container {
         display: grid;
         grid-template-columns: min-content auto;
-        width: 1200px;
+        max-width: 1200px;
         height: 80px;
         margin-left: auto;
         margin-right: auto;
+        padding: 0 20px;
         align-content: center;
         justify-content: space-between;
     }
@@ -117,9 +118,6 @@ button {
             z-index: 2;
         }
     }
-
-
-
 }
 
 /* MOBILE */
@@ -127,6 +125,10 @@ button {
 .mobile-menu {
     display: none;
     z-index: 10;
+    
+    img {
+        height: 70px;
+    }
 }
 
 .mobile-menu-shadow {
@@ -183,7 +185,25 @@ button {
     }
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1024px) {
+
+    .desktop-menu {
+        height: 60px;
+    
+        .desktop-menu-container {
+            height: 100%;
+        }
+    
+        .logo {
+    
+            img {
+                height: 50px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
     
     .container {
         padding: 0 20px;
@@ -194,7 +214,7 @@ button {
     }
 
     .mobile-menu {
-        position: absolute;
+        position: fixed;
         display: flex;
         top: 20px;
         left: 5%;

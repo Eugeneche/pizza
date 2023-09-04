@@ -5,8 +5,9 @@
 }
 
 .footer-container {
-    width: 1100px;
+    max-width: 1100px;
     margin: auto;
+    padding: 0 20px;
     display: grid;
     grid-template-columns: 15% 29% 25% 25%;
     grid-template-rows: auto 50px;
@@ -55,4 +56,57 @@
     border-top: 1px solid #ffffff;
     font-weight: 100;
     font-size: 0.9rem;
+}
+
+@media screen and (max-width: 780px) {
+
+    .footer-container {
+        grid-template-columns: 43% 55%;
+        grid-template-rows: auto auto 50px;
+        column-gap: 2%;
+        row-gap: 20px;
+        width: 80%;
+    }
+
+    .logo {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    .links {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    .address {
+        grid-column-start:2;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    .socials {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    .rights {
+        grid-column-start: 1;
+        grid-column-end:3;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    .footer-container {
+        width: 100%;
+    }
 }

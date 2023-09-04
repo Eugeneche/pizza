@@ -19,7 +19,7 @@ const IndexPage = ({data}) => {
       <Header />
 
       <section>
-        <h1 className={styles.h1}>Experience Pizza Passion at Its Finest on Your Plate!</h1>
+        <h1>Experience Pizza Passion at Its Finest on Your Plate!</h1>
         <div className={styles.container}>
           <div className={styles.hotOffer}>
             {hotOffer.map(pizza => {
@@ -28,7 +28,7 @@ const IndexPage = ({data}) => {
                   <GatsbyImage 
                     image={getImage(pizza.mainImage)} 
                     alt={`Image of ${pizza.name}`} 
-                    style={{width: "250px", margin: "auto"}}
+                    style={{maxWidth: "250px", margin: "auto"}}
                   />
                   <Link to={`../${pizza.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[" "]/g, "-").toLowerCase()}`}>
                     <h4>{pizza.name}</h4>
@@ -46,7 +46,7 @@ const IndexPage = ({data}) => {
         <div className={styles.container}>
           <div className={styles.about}>
             <StaticImage className={styles.aboutImage} src="../images/pizzayolo.jpg" alt="pizzayola image" />
-            <p className={styles.text}>Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. Wiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
+            <p className={styles.text}>At our pizzeria, we believe in the power of love in every slice. Our dedicated chefs pour their passion into crafting each pizza, using only the best and freshest ingredients available. We take pride in delivering not just a meal, but an experience that delights our cherished clients' taste buds and warms their hearts. Join us in savoring the true essence of pizza, made with love, just for you.</p>
             <div className={styles.extraInfo}>
               <div className={styles.left}>
                 <span>Types of pizzas</span>

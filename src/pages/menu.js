@@ -70,6 +70,7 @@ const Menu = ({ data }) => {
       <div className={styles.container}>
         <h1 className={styles.h1}>Menu</h1>
         <div className={styles.menuContainer}>
+
           <div className={styles.products}>
             {productsForDisplay.map(node => {
               const image = getImage(node.mainImage)
@@ -102,7 +103,7 @@ const Menu = ({ data }) => {
 
                     </div>
                     <Link to={`../${node.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[" "]/g, "-").toLowerCase()}`}>
-                    <h3 className={styles.productName}>{node.name}</h3>
+                      <h3 className={styles.productName}>{node.name}</h3>
                     </Link>
                     <h4>${node.price}</h4>
                   </div>
@@ -110,6 +111,7 @@ const Menu = ({ data }) => {
               }
             )}
           </div>
+
           <div className={styles.info}>
             <h4>Your order</h4>
             <ul className={styles.cartList}>
@@ -129,8 +131,8 @@ const Menu = ({ data }) => {
                 )})
               }
               <li className={styles.totalSum}>
-              <span>Total:</span>
-              <span>{`$${totalCost.toFixed(2)}`}</span>
+                <span>Total:</span>
+                <span>{`$${totalCost.toFixed(2)}`}</span>
               </li>
             </ul>
             <Link to="/cart" className={styles.toCartBtn}><button>To cart<span style={{position: "relative", bottom: "2px"}}> &#8594;</span></button></Link>

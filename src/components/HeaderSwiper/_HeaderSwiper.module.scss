@@ -1,7 +1,8 @@
 .slide {
     position: relative;
-    width: 1200px;
+    max-width: 1200px;
     margin: auto;
+    padding: 0 20px;
     display: grid;
     grid-template-columns: 25% 46% 25%;
     gap: 2%;
@@ -16,4 +17,49 @@
 
 .header-pizza-name {
     text-transform: uppercase;
+}
+
+/* mobile */
+
+@media screen and (max-width: 1024px) {
+    
+    .header-motto, .header-pizza-name {
+        font-size: 4vw;
+    }
+}
+
+@media screen and (max-width: 834px) {
+    
+    .slide {
+        grid-template-columns: 1fr 20vw 20vw 20vw 1fr;
+        grid-template-rows: 55vw 5vw 1fr;
+        margin-bottom: 30px;
+    }
+
+    .header-product-image {
+        grid-column-start: 2;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+
+    .header-motto {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 4;
+        align-self: start;
+        z-index: 2;
+    }
+
+    .header-pizza-name {
+        grid-column-start:4;
+        grid-column-end: 6;
+        grid-row-start: 2;
+        grid-row-end: 2;
+        justify-self: end;
+        align-self: start;
+        z-index: 2;
+        text-align: right;
+    }
 }

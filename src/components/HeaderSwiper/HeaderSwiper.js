@@ -47,6 +47,7 @@ const HeaderSwiper = () => {
                     <div className={styles.slide} key={productObject.id}>
                         <div className={styles.headerMotto}>{mottos[i]}</div>
                         <GatsbyImage 
+                            className={styles.headerProductImage}
                             image={getImage(productObject.mainImage)} 
                             alt={`Image of ${productObject.name}`} 
                         />
