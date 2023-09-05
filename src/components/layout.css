@@ -43,7 +43,7 @@ body {
   margin: 0;
   word-wrap: break-word;
 }
-a {
+/* a {
   background-color: transparent;
   color: var(--color-primary);
   text-decoration: none;
@@ -51,7 +51,7 @@ a {
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 2px;
-}
+} */
 a:active,
 a:hover {
   outline-width: 0;
