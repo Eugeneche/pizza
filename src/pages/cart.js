@@ -75,7 +75,7 @@ const Cart = ({ data }) => {
                   return (
                     <li key={pizzaObj.id} className={styles.productInfo}>
                       <span className={styles.productName}>{pizzaObj.name}</span>
-                      <span>{`${pizzaObj.weight} g`}</span>
+                      <span>{`${pizzaObj.weight}g`}</span>
                       <span>{pizzaObj.quantity}</span> 
                       <span>x</span>
                       <span>{`$${pizzaObj.price}`}</span> 
