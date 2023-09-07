@@ -91,17 +91,26 @@ const MainMenu = () => {
                 </div> :
 
                 <div></div>
-              }
-              
-            </li>
-            
+              }             
+           </li>           
           </ul>
         </div>
       </nav>
 
       <nav className={styles.mobileMenu}>
-        <Link className={styles.logo} to="/"><img src={logo} alt="logo"></img></Link>
-        <button onClick={() => setIsShow(true)} className={styles.hamburger}><img src={hamburgerStroke} alt="hamburger menu icon"></img></button>
+        <Link to="/"><img className={styles.logoMobile} src={logo} alt="logo"></img></Link>
+        <div className={styles.cartMobileMenu}>
+          <Link to="/cart"><img className={styles.cartMobile} src={bag} alt="shopping bag icon"></img></Link>
+          {totalQuantity ? 
+            <div>
+              <span className={styles.cartQuantityBackgroung}></span>
+              <span className={styles.cartQuantity}>{totalQuantity}</span> 
+            </div> :
+
+            <div></div>
+          }
+        </div>
+        <button onClick={() => setIsShow(true)}><img className={styles.hamburger} src={hamburgerStroke} alt="hamburger menu icon"></img></button>
       </nav>
       
       <div className={styles.mobileMenuShadow} style={isShow ? {display: "block"} : {display: "none"}}>        

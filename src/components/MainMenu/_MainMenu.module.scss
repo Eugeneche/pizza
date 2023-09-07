@@ -131,7 +131,45 @@ button {
         align-self: center;
     }
 
-    img {
+    .logo-mobile {
+        height: 50px;
+        margin: 0;
+    }
+
+    .cart-mobile-menu {
+        position: relative;
+
+        .cart-mobile {
+            position: relative;
+            top: 10px;
+            height: 40px;
+            margin: 0;
+        }
+
+        .cart-quantity-backgroung {
+            position: absolute;
+            top: 3px;
+            left: 16px;
+            height: 27px;
+            width: 27px;
+            background: white;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .cart-quantity {
+            position: absolute;
+            width: 22px;
+            top: 4px;
+            right: -11px;
+            text-align: center;
+            color: orange;
+            font-weight: 400;
+            z-index: 2;
+        }
+    }
+
+    .hamburger {
         height: 50px;
         margin: 0;
     }
