@@ -35,6 +35,7 @@
     .product-name {
         text-align: left;
         padding-left: 10px;
+        font-weight: 600;
     }
 
     .quantity-control {
@@ -71,8 +72,10 @@
 
 .product-cost {
     display: grid;
-    grid-template-columns: 82% 10% 8%;
-    font-weight: 600;
+    grid-template-columns: 82% minmax(87px, 10%) 1fr;
+    font-weight: 700;
+    font-size: 18px;
+    padding-top: 5px;
 
     .total-cost-title {
         padding-left: 10px;
@@ -99,7 +102,7 @@
     }
     
     .product-info {
-        grid-template-columns: 1fr 10% 5% 3% 10% 2% minmax(72px, 10%) minmax(60px, 8%);
+        grid-template-columns: 1fr 10% 5% 3% 10% 2% minmax(72px, 10%) minmax(67px, 8%);
     
         .quantity-control {
             justify-content: space-between;
@@ -108,9 +111,13 @@
         }
     
         .add, .extract {
-            height: 20px;
-            width: 20px;
+            height: 22px;
+            width: 22px;
         }
+    }
+
+    .product-cost {
+        grid-template-columns: 1fr minmax(87px, 10%) minmax(50px, 8%);
     }
 }
 
@@ -122,7 +129,7 @@
     }
     
     .product-info {
-        grid-template-columns: 1fr 10% 5% 3% minmax(62px, 10%) 2% minmax(72px, 10%) minmax(60px, 8%);
+        grid-template-columns: 1fr 10% 5% 3% minmax(62px, 10%) 2% minmax(72px, 10%) minmax(67px, 8%);
 
         .product-name {
             padding: 0 1vw;
@@ -133,15 +140,6 @@
             padding-left: 7px;
             padding: 3px 1vw 0 7px;
         }
-    
-        .add, .extract {
-            height: 20px;
-            width: 20px;
-        }
-    }
-
-    .product-cost {
-        grid-template-columns: 1fr minmax(72px, 10%) minmax(60px, 8%);
     }
 }
 
@@ -166,6 +164,6 @@
     }
 
     .product-cost {
-        grid-template-columns: 59% 26% 15%;
+        grid-template-columns: 59% 28% 13%;
     }
 }

@@ -159,9 +159,9 @@ button {
 
         .cart-quantity {
             position: absolute;
-            width: 22px;
+            width: 20px;
             top: 4px;
-            right: -11px;
+            right: -10px;
             text-align: center;
             color: orange;
             font-weight: 400;
@@ -243,6 +243,33 @@ button {
     
             img {
                 height: 50px;
+            }
+        }
+
+        .contacts {
+        
+            .cart {
+                display: flex;
+                position: relative;
+                margin: 0;
+    
+                img {
+                    margin: 0;
+                    width: 24px;
+                }
+            }
+    
+            .cart-quantity-backgroung {
+                top: -10px;
+                left: 12px;
+                height: 24px;
+                width: 24px;
+            }
+    
+            .cart-quantity {
+                width: 25px;
+                top: -11px;
+                right: -13px;
             }
         }
     }

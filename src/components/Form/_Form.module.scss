@@ -105,9 +105,15 @@
     }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 500px) {
     
     .form  {
-        width: 95%;
+        width: 90%;
+
+        .fields {
+            grid-template-columns: 100%;
+            margin-bottom: 10px;
+            width: 100%;
+        }
     }
 }
