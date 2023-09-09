@@ -6,9 +6,9 @@ const ReviewItem = ({review}) => {
 
 
     return (
-        <div className={styles.reviewItem}>
-            <h4 className={styles.reviewName}>{review.name}</h4>
-            <div className={styles.reviewText}>{documentToReactComponents(JSON.parse(review.testimonialText.raw))}</div>
+        <div className={styles.reviewSlide}>
+            <h4>{review.name}</h4>
+            <div>{documentToReactComponents(JSON.parse(review.testimonialText.raw))}</div>
         </div>
     )
 }

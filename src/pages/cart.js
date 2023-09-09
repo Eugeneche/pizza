@@ -19,7 +19,9 @@ const Cart = ({ data }) => {
   const cartForDisplay = []
 
   const [ cart, setCart ] = useLocalStorage("cart", {})
-  const [ l, setL] = useState(cartForDisplay.length)
+  const [ l, setL ] = useState(cartForDisplay.length)
+  const [ dialog, setDialog ] = useState(false)
+  const [ currentArticle, setCurrentArticle] = useState(0)
 
   data.allContentfulPizza.nodes.forEach(node => {
                 
@@ -62,8 +64,34 @@ const Cart = ({ data }) => {
     }
   }
 
+  const preRemoveItem = (article) => {
+
+    setCurrentArticle(article)
+    setDialog(true)
+  }
+
+  const removeItem = () => {
+
+    Reflect.deleteProperty(cart, currentArticle.toString())
+    setCart(cart)
+    setL(cartForDisplay.length)
+    setDialog(false)
+  }
+
   return (
     <Layout>
+
+      <div className={styles.dialogShadow} style={dialog ? {display: "block"} : {display: "none"}}> 
+        <div className={styles.dialogWindow}>
+          <div className={styles.dialogTitle}>Confirm your action</div>
+          <div className={styles.dialogBody}>Remove an item from the cart?</div>
+          <div className={styles.dialogButtons}>
+            <button onClick={() => setDialog(false)}>Cancel</button>
+            <button onClick={() => removeItem()}>Delete</button>
+          </div>
+        </div>
+      </div>
+
       <div className={styles.container}>
         <h1 className={styles.h1}>Your cart</h1>
         {cartForDisplay.length > 0 ? 
@@ -84,6 +112,7 @@ const Cart = ({ data }) => {
                       <span className={styles.quantityControl}>
                         <button onClick={() => addItem(pizzaObj.article)} className={styles.add}>&#43;</button>
                         <button onClick={() => extractItem(pizzaObj.article)} className={styles.extract}>&#8722;</button>
+                        <button onClick={() => preRemoveItem(pizzaObj.article)} className={styles.remove}>&#9587;</button>
                       </span>
                     </li>
                   )})
@@ -98,8 +127,9 @@ const Cart = ({ data }) => {
             <Form order={htmlOrder}/>
           </div> : 
     
-          <p className={styles.emptyCart}>Your cart is empty <Link to="/menu">Would you like to place an order?</Link></p>
-          
+          <div className={styles.emptyCart}>
+            <p>Your cart is empty.</p><Link to="/menu">Would you like to place an order?</Link>
+          </div>
         }
 
       </div>  

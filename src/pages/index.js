@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import * as styles from "../styles/_styles.module.scss"
 import Header from "../components/Header/Header"
-import ReviewSlider from "../components/Reviews/ReviewSlider"
+import ReviewSliderSwiper from "../components/Reviews/ReviewSliderSwiper"
 
 
 const IndexPage = ({data}) => {
@@ -25,11 +25,13 @@ const IndexPage = ({data}) => {
             {hotOffer.map(pizza => {
               return (
                 <div className={styles.pizzaItem} key={pizza.id}>
-                  <GatsbyImage 
-                    image={getImage(pizza.mainImage)} 
-                    alt={`Image of ${pizza.name}`} 
-                    style={{maxWidth: "250px", margin: "auto"}}
-                  />
+                  <Link to={`../${pizza.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[" "]/g, "-").toLowerCase()}`}>
+                    <GatsbyImage 
+                      image={getImage(pizza.mainImage)} 
+                      alt={`Image of ${pizza.name}`} 
+                      style={{maxWidth: "250px", margin: "auto"}}
+                    />
+                  </Link>
                   <Link to={`../${pizza.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[" "]/g, "-").toLowerCase()}`}>
                     <h4>{pizza.name}</h4>
                   </Link>
@@ -56,6 +58,7 @@ const IndexPage = ({data}) => {
                 <span>clients per hour</span>
                 <span>252</span>
               </div>
+              <StaticImage className={styles.aboutBackground} src="../images/vegs_bg.svg" alt="background" />
             </div>
           </div>
         </div>
@@ -68,10 +71,10 @@ const IndexPage = ({data}) => {
       <section>
         <div className={styles.testimonials}>
             <div className={styles.testimonialsContainer}>
-              <ReviewSlider />
+              <ReviewSliderSwiper />
             </div>
             
-            <StaticImage src="../images/pizza_people.jpg" alt="people are eating pizza image" style={{maxHeight: "600px"}}/* height={600} layout="fullWidth" *//>
+            <StaticImage src="../images/pizza_people.jpg" alt="people are eating pizza image" style={{maxHeight: "500px"}}/* height={600} layout="fullWidth" *//>
         </div>
       </section>
           

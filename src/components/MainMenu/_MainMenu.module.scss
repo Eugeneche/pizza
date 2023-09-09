@@ -159,11 +159,11 @@ button {
 
         .cart-quantity {
             position: absolute;
-            width: 20px;
-            top: 4px;
-            right: -10px;
+            width: 27px;
+            top: 5px;
+            right: -13px;
             text-align: center;
-            color: orange;
+            color: #ee7300;
             font-weight: 400;
             z-index: 2;
         }
@@ -188,9 +188,9 @@ button {
 
 .mobile-menu-background {
     position: fixed;
-    background: #ffffff;
+    background: #ffc354;
     top: 5%;
-    padding: 10vh 0;
+    /* padding: 10vh 0; */
     text-align: center;
     overflow-y: scroll;
     z-index: 20;
@@ -227,6 +227,18 @@ button {
         width: max-content;
         margin: auto;
         margin: 0 auto 7px;
+    }
+
+    .socials{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            margin-bottom: 5px;
+            background: #ffa808;
+        }
     }
 }
 

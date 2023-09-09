@@ -9,12 +9,15 @@ import logo from "../../images/gatsby-icon.png"
 import hamburgerStroke from "../../images/menu_stroke.svg"
 import close from "../../images/close.svg"
 import bag from "../../images/bag-icon_menu.svg"
+import fb from "../../images/fb_mc.svg"
+import twitter from "../../images/twitter_mc.svg"
+import insta from "../../images/instagram_mc.svg"
 
 const MainMenu = () => {
 
-  const [isShow, setIsShow] = useState(false)
-  const [totalQuantity, setTotalQuantity] = useState(0)
-  const [isFixed, setIsFixed] = useState(false)
+  const [ isShow, setIsShow ] = useState(false)
+  const [ totalQuantity, setTotalQuantity ] = useState(0)
+  const [ isFixed, setIsFixed ] = useState(false)
 
   useEffect(() => {
     
@@ -50,14 +53,18 @@ const MainMenu = () => {
     /* height: "90vh", */
     bottom: "5%",
     right: "10%",
+    padding: "6vh 0",
     transition: "all ease 0.5s"
   }
 
   const styleBcHide = {
+    left: "-10%",
     right: "100%",
     bottom: "95%",
+    padding: "0",
     /* height: "0vh", */
-    /* transition: "all ease 0.1s" */
+    transition: "all ease 0.3s",
+    /* transition: "bottom ease 1s" */
   }
 
   return (
@@ -65,20 +72,9 @@ const MainMenu = () => {
       <nav className={styles.desktopMenu} style={isFixed ? styleFixed : styleNormal}>
         <div className={styles.desktopMenuContainer}>
           <ul className={styles.pages}>
-            <li><NavLink /* className={styles.menuItem} */ to="/">HOME</NavLink></li>
-            <li><NavLink /* className={styles.menuItem} */ to="/menu">MENU</NavLink></li>
-            <li><NavLink /* className={styles.menuItem} */ to="/contacts">CONTACTS</NavLink></li>
-  {/*           <div className={styles.services}>
-              services
-              <ul className={[styles.servicesCategories, styles.menuItem].join(' ')}>
-                {servicesCategories.map(cat => {
-                  const url = cat.relativeDirectory.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[" "]/g, "-").toLowerCase()
-                  return <li key={cat.relativeDirectory}><Link to={"/"+url}>{cat.relativeDirectory}</Link></li>
-                })}
-              </ul>
-            </div> */}
-            {/* <li><NavLink className={styles.menuItem} to="/prices">prices</NavLink></li>
-            <li><NavLink className={styles.menuItem} to="/contacts">contacts</NavLink></li> */}
+            <li><NavLink to="/">HOME</NavLink></li>
+            <li><NavLink to="/menu">MENU</NavLink></li>
+            <li><NavLink to="/contacts">CONTACTS</NavLink></li>
           </ul>
           <Link className={styles.logo} to="/"><img src={logo} alt="logo"></img></Link>
           <ul className={styles.contacts}>
@@ -125,19 +121,14 @@ const MainMenu = () => {
           <Link onClick={() => setIsShow(false)} className={styles.item} to="/">HOME</Link>
           <Link onClick={() => setIsShow(false)} className={styles.item} to="/menu">MENU</Link>
           <Link onClick={() => setIsShow(false)} className={styles.item} to="/contacts">CONTACTS</Link>
-{/*           <div className={styles.services}>
-            
-            {servicesCategories.map(cat => {
-              const url = cat.relativeDirectory.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[" "]/g, "-").toLowerCase()
-              return <Link onClick={() => setIsShow(false)} key={cat.relativeDirectory} className={styles.subItem} to={"/"+url}>
-                  {cat.relativeDirectory}
-                </Link>
-            })}
-            
-          </div> */}
-          {/* <Link onClick={() => setIsShow(false)} className={styles.item} to="/prices">prices</Link>
-          <Link onClick={() => setIsShow(false)} className={styles.item} to="/contacts">contacts</Link> */}
-        </div>         
+          <Link onClick={() => setIsShow(false)} className={styles.item} to="/cart">CART</Link>
+        </div>   
+        <div className={styles.socials}>
+            <h4>join us</h4>
+            <a href="https://www.facebook.com/" target="_blank"><img src={fb} alt="facebook icon"></img></a>
+            <a href="https://twitter.com/home" target="_blank"><img src={twitter} alt="twitter icon"></img></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src={insta} alt="instagram icon"></img></a>
+          </div>     
       </nav>
 
     </>

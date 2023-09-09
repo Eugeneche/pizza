@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
@@ -7,9 +7,9 @@ import Seo from "../components/seo"
 import useLocalStorage from "../hooks/useLocalStorage"
 import * as styles from "../styles/_menu.module.scss"
 
-import bag from "../images/bag-icon.svg"
-import bag_filled from "../images/bag-icon_filled.svg"
-import arrow from "../images/arrow_right.svg"
+import bag from "../images/bag-icon1.svg"
+import bag_filled from "../images/bag-icon_filled1.svg"
+import arrow from "../images/arrow_right1.svg"
 
 
 const Menu = ({ data }) => {
@@ -20,9 +20,11 @@ const Menu = ({ data }) => {
   let totalCost = 0
 
   const [ cart, setCart ] = useLocalStorage("cart", {})
-  const [ l, setL] = useState(cartForDisplay.length)
+  const [ l, setL] = useState(Object.keys(cart).length)
+  //const [ totalQuantity, setTotalQuantity ] = useState(0)
   const [ currentCategory, setCurrentCategory ] = useState('allCategory')
-
+  //const [ currentArticle, setCurrentArticle ] = useState('')
+  //console.log(l)
   data.allContentfulPizza.nodes.forEach(node => {
 
     if (currentCategory === 'allCategory') {
@@ -52,10 +54,11 @@ const Menu = ({ data }) => {
 
   const addItem = (article) => {
     setCart({...cart, [article]: cart[article] + 1})
+    //console.log(cart)
   }
 
   const extractItem = (article) => {
-
+    //console.log(l) = 0
     setCart({...cart, [article]: cart[article] - 1})
   
     if (cart[article] < 2) {
@@ -63,7 +66,37 @@ const Menu = ({ data }) => {
       setCart(cart)
       setL(cartForDisplay.length)
     }
+    //console.log(l) = 0
   }
+
+  const removeItem = (article) => {
+
+    delete cart[article.toString()]
+    setCart(cart)
+    //console.log(cart)
+    setL(Object.keys(cart).length)
+  }
+  /* setL(cartForDisplay.length)
+  console.log(l) */
+
+  useEffect(() => {
+    setL(Object.keys(cart).length)
+  }, [{}])
+
+  useEffect(() => {
+
+    data.allContentfulPizza.nodes.forEach(node => {
+                
+      return Object.keys(cart).forEach(pizzaArticle => {
+  
+        if (node.article.toString() === pizzaArticle) {
+          node.quantity = cart[pizzaArticle]
+          cartForDisplay.push(node)
+        }
+      })
+    })
+    //console.log(l)
+  }, [totalCost])
 
   return (
     <Layout>
@@ -87,14 +120,14 @@ const Menu = ({ data }) => {
                       {!cart[currentArticle] ? 
 
                         <div className={styles.icons}>
-                          <img onClick={ () => setCart({ ...cart, [currentArticle]: 1}) } src={bag} alt="bag icon" />
+                          <img onClick={() => setCart({ ...cart, [currentArticle]: 1}) } src={bag} alt="bag icon" />
                           <Link to={`../${node.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[" "]/g, "-").toLowerCase()}`}>
                             <img src={arrow} alt="arrow icon" />
                           </Link>
                         </div> :
 
                         <div className={styles.icons}>
-                          <img src={bag_filled} alt="bag with some ordered goods icon" />
+                          <img onClick={() => removeItem(currentArticle)} src={bag_filled} alt="bag with some ordered goods icon" />
                           <Link to={`../${node.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[" "]/g, "-").toLowerCase()}`}>
                             <img src={arrow} alt="arrow icon" />
                           </Link>

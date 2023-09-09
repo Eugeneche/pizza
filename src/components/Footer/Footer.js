@@ -31,9 +31,9 @@ const Footer = () => {
           </div>
           <div className={styles.socials}>
             <h4>join us</h4>
-            <a href="https://www.facebook.com/"><img src={fb} alt="facebook icon"></img></a>
-            <a href="https://twitter.com/home"><img src={twitter} alt="twitter icon"></img></a>
-            <a href="https://www.instagram.com/"><img src={insta} alt="instagram icon"></img></a>
+            <a href="https://www.facebook.com/" target="_blank"><img src={fb} alt="facebook icon"></img></a>
+            <a href="https://twitter.com/home" target="_blank"><img src={twitter} alt="twitter icon"></img></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src={insta} alt="instagram icon"></img></a>
           </div>
           <div className={styles.rights}>
             Fauget Pizzeria © {new Date().getFullYear()} All rights reserved

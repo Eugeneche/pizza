@@ -33,7 +33,7 @@ const ReviewSlider = () => {
       if (leftValue >= reviews.length - 1) {
         setLeftValue(0)
       }      
-    }, 3000)
+    }, 6000)
 
     return () => {
       clearInterval(moveLeft)
