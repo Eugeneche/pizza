@@ -84,7 +84,7 @@ const Cart = ({ data }) => {
       <div className={styles.dialogShadow} style={dialog ? {display: "block"} : {display: "none"}}> 
         <div className={styles.dialogWindow}>
           <div className={styles.dialogTitle}>Confirm your action</div>
-          <div className={styles.dialogBody}>Remove an item from the cart?</div>
+          <div className={styles.dialogBody}>Delete an item from the cart?</div>
           <div className={styles.dialogButtons}>
             <button onClick={() => setDialog(false)}>Cancel</button>
             <button onClick={() => removeItem()}>Delete</button>
