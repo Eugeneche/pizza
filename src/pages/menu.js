@@ -21,10 +21,8 @@ const Menu = ({ data }) => {
 
   const [ cart, setCart ] = useLocalStorage("cart", {})
   const [ l, setL] = useState(Object.keys(cart).length)
-  //const [ totalQuantity, setTotalQuantity ] = useState(0)
   const [ currentCategory, setCurrentCategory ] = useState('allCategory')
-  //const [ currentArticle, setCurrentArticle ] = useState('')
-  //console.log(l)
+
   data.allContentfulPizza.nodes.forEach(node => {
 
     if (currentCategory === 'allCategory') {
@@ -54,49 +52,29 @@ const Menu = ({ data }) => {
 
   const addItem = (article) => {
     setCart({...cart, [article]: cart[article] + 1})
-    //console.log(cart)
   }
 
   const extractItem = (article) => {
-    //console.log(l) = 0
+
     setCart({...cart, [article]: cart[article] - 1})
   
     if (cart[article] < 2) {
       Reflect.deleteProperty(cart, article.toString())
       setCart(cart)
-      setL(cartForDisplay.length)
+      setL(Object.keys(cart).length)
     }
-    //console.log(l) = 0
   }
 
   const removeItem = (article) => {
 
     delete cart[article.toString()]
     setCart(cart)
-    //console.log(cart)
     setL(Object.keys(cart).length)
   }
-  /* setL(cartForDisplay.length)
-  console.log(l) */
 
   useEffect(() => {
     setL(Object.keys(cart).length)
   }, [{}])
-
-  useEffect(() => {
-
-    data.allContentfulPizza.nodes.forEach(node => {
-                
-      return Object.keys(cart).forEach(pizzaArticle => {
-  
-        if (node.article.toString() === pizzaArticle) {
-          node.quantity = cart[pizzaArticle]
-          cartForDisplay.push(node)
-        }
-      })
-    })
-    //console.log(l)
-  }, [totalCost])
 
   return (
     <Layout>
