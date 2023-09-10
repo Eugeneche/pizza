@@ -5,11 +5,14 @@ import * as styles from "./_Form.module.scss"
 const Form = (props) => {
 
     const [order, setOrder] = useState('')
+    const [orderNumber, setOrderNumber] = useState('')
 
     useEffect(() => {       
         setOrder(props.order)
+        setOrderNumber(props.orderNumber)
     })
-
+console.log(order)
+console.log(orderNumber)
     const form = useRef()
 
     const sendEmail = (e) => {
@@ -38,6 +41,7 @@ const Form = (props) => {
 
             {/* <label htmlFor="order">Your order</label> */}
             <textarea className={styles.order} name="order" defaultValue={order}></textarea>
+            <textarea className={styles.orderNumber} name="order_number" defaultValue={orderNumber}></textarea>
             
             <label htmlFor="message">Message</label>
             <textarea name="message" placeholder="your message" style={{minHeight: "100px"}}></textarea>

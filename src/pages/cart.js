@@ -15,6 +15,7 @@ import Form from "../components/Form/Form"
 const Cart = ({ data }) => {
 
   let htmlOrder = ''
+  let orderNumber = 0
   let totalCost = 0
   const cartForDisplay = []
 
@@ -45,6 +46,7 @@ const Cart = ({ data }) => {
     })
     totalCost = totalCostUnrounded.toFixed(2)
     htmlOrder += `Total cost: $${totalCost}\n`
+    orderNumber = Math.floor(Math.random() * 9000 + 1000)
   }
 
   setOrder()
@@ -124,7 +126,7 @@ const Cart = ({ data }) => {
               </ul>
             </div>
 
-            <Form order={htmlOrder}/>
+            <Form order={htmlOrder} orderNumber={orderNumber} />
           </div> : 
     
           <div className={styles.emptyCart}>
