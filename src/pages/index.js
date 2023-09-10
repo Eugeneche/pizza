@@ -56,7 +56,7 @@ const IndexPage = ({data}) => {
               </div>
               <div className={styles.right}>
                 <span>clients per hour</span>
-                <span>252</span>
+                <span>250+</span>
               </div>
               <StaticImage className={styles.aboutBackground} src="../images/vegs_bg.svg" alt="background" />
             </div>

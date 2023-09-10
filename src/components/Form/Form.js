@@ -11,17 +11,17 @@ const Form = (props) => {
         setOrder(props.order)
         setOrderNumber(props.orderNumber)
     })
-console.log(order)
-console.log(orderNumber)
+
     const form = useRef()
 
     const sendEmail = (e) => {
         e.preventDefault()
-
+        
     emailjs.sendForm('service_l8cr82m', 'template_waaavkq', form.current, 'user_FAY8OHLTh9HWuUBjXK68o')
         .then((result) => {
             console.log(result.text)
             form.current.reset() //<<<
+            props.clearAllCart()
         }, (error) => {
             console.log(error.text)
         })

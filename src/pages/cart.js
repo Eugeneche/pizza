@@ -80,6 +80,11 @@ const Cart = ({ data }) => {
     setDialog(false)
   }
 
+  const clearAllCart = () => {
+    setCart({})
+    setL(cartForDisplay.length)
+  }
+
   return (
     <Layout>
 
@@ -126,7 +131,7 @@ const Cart = ({ data }) => {
               </ul>
             </div>
 
-            <Form order={htmlOrder} orderNumber={orderNumber} />
+            <Form order={htmlOrder} orderNumber={orderNumber} clearAllCart={clearAllCart} />
           </div> : 
     
           <div className={styles.emptyCart}>
