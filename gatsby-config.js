@@ -7,10 +7,10 @@ require("dotenv").config({
  */
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Fauget Pizzeria`,
+    description: `Unleash Your Taste Bud Adventure with Our Tempting Pizzas!`,
+    author: `@eugeneche`,
+    siteUrl: `https://pizzeria-fauget.netlify.app/`,
   },
   plugins: [
     `gatsby-plugin-image`,

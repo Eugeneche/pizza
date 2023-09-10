@@ -174,7 +174,7 @@ const Menu = ({ data }) => {
   )
 }
 
-export const Head = () => <Seo title="Home" />
+export const Head = () => <Seo title="Menu" />
 
 export default Menu
 
